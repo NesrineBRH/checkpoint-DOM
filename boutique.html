@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Shopping Card</title>
+  <link rel="stylesheet" href="style-DOM.css">
+  <!-- <script src="script.js"></script> -->
+</head>
+<body>   
+<div class="instrument">
+<div class="img-instrument" > 
+<img src="https://store.sonomusic.tn/1517-large_default/guitare-folk-f310-yamaha-avec-housse.jpg" alt="Guitare Folk">
+</div>
+<div class="favoris" >
+<button id="favorite" type="button" onclick="like()" ><img class="favoris" src="favoris1.jpg" alt="favoris"></button>
+</div>
+<div class="text">
+<h2 id="article">GUITARE FOLK F310 YAMAHA NATURELLE</h2>
+<p id="prixguitare">400</p> <p>TND</p>
+</div>
+<div class="ajust">
+<input id="quantityguitare" type="number" value="1" placeholder="1" step="1" min="1" max="100">
+<button id="plus" type="button" onclick="adjustplus()" ><img class="icone" src="https://cdn.icon-icons.com/icons2/1521/PNG/512/pluscirclehd_106127.png" alt="plus"></button>
+<button id="moins" type="button" onclick="adjustmoins()"><img class="icone" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Oab7puWKKaGT8IVJKRwEzua6hwi_T-hxXQ&usqp=CAU" alt="moins"></button>
+</div>
+</div>
+<div class="final">
+<button id="ajout-panier" onclick="total()" type="submit">Ajouter au panier</button>
+<label >Votre Commande TND</label>
+<input type="number" id="commande" disabled="disabled" value="0">
+</div>
+<div id="listcommande">
+</div>
+<script>
+function adjustplus()
+{
+if (document.getElementById('quantityguitare').getAttribute("value")<document.getElementById('quantityguitare').getAttribute("max")-1)
+{
+var x=parseInt(document.getElementById('quantityguitare').getAttribute("value"))+1;
+document.getElementById('quantityguitare').setAttribute('value',x.toString());
+}
+else
+{alert ('limite du stock');}
+}
+
+
+function adjustmoins()
+{
+  if (document.getElementById('quantityguitare').getAttribute("value")>document.getElementById('quantityguitare').getAttribute("min"))
+  {
+var y=parseInt(document.getElementById('quantityguitare').getAttribute('value'))-1;
+document.getElementById('quantityguitare').setAttribute('value',y.toString());
+}
+else
+{alert ('minimum un article');}
+}
+
+function like()
+{
+if(document.getElementById('favorite').style.getPropertyValue('background-color')!='red')
+{document.getElementById('favorite').style.setProperty("background-color",'red');}
+else if(document.getElementById('favorite').style.getPropertyValue('background-color')!='azure')
+{document.getElementById('favorite').style.setProperty("background-color",'azure');}
+}
+
+function total()
+{
+document.getElementById('commande').setAttribute('value',parseInt(document.getElementById('quantityguitare').getAttribute("value"))*parseInt(document.getElementById('prixguitare').innerText));
+var p=document.createElement('li');
+var n=Object.keys(p).length;
+var newContent = document.createTextNode(document.getElementById('article').innerText+'*('+document.getElementById('quantityguitare').getAttribute("value")+')');
+p.appendChild(newContent);
+document.getElementById('listcommande').appendChild(p);
+/* var i=0;
+do{i=i+1;} while (p[i].innerText!=newContent && i<n)
+if (i==n || p[i].innerText==NaN)
+{document.getElementById('listcommande').appendChild(p);} */
+
+ 
+}
+
+</script> 
+</body>
+</html>

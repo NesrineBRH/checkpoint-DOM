@@ -1,0 +1,40 @@
+body
+{background-color: azure;
+
+grid-template-areas: 
+"imginstrument favoris text"
+"imginstrument favoris ajust"
+". . final";
+grid-template-rows:  3fr 1fr 2fr ;
+grid-template-columns:auto;}
+
+.img-instrument
+{grid-area: imginstrument;}
+.img-instrument img
+{width:300px; height: auto;}
+.favoris
+{ grid-area:favoris; width:20px; height: 20px;}
+.favoris button
+{background-color: azure;}
+.text
+{grid-area: text;}
+.ajust
+{grid-area: ajust;}
+.icone
+{ display: flex; flex-direction:column; width:20px; height: 20px;}
+.ajust button
+{
+    background-color: transparent;
+    border: solid 0px;
+    width: 25px;
+}
+.final
+{grid-area: final;}
+#ajout-panier
+{    background-color: rgba(255, 85, 0, 0.728);
+    border: ridge 1px rgba(255, 247, 0, 0.728);
+    width:300px; height: 50px;
+    font-weight: bold;
+}
+#listcommande
+{display:block;}
